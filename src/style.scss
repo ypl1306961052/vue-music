@@ -1,0 +1,225 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 1.4em;
+}
+
+.d-flex {
+  // 弹性模型
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+$flex-jc: (
+        'start':flex-start,
+        'end':flex-end,
+        'center':center,
+        'between': space-between,
+        'around':space-around
+);
+@each $key, $vale in $flex-jc {
+  .jc-#{$key} {
+    // justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+    justify-content: $vale;
+  }
+}
+
+$flex-ai: (
+        'start':flex-start,
+        'end':flex-end,
+        'center':center
+);
+.text-center {
+  text-align: center;
+}
+
+@each $key, $value in $flex-ai {
+  .ai-#{$value} {
+    align-items: $value;
+  }
+}
+
+$text-base-size: 1em;
+$text-size: (
+        xs:0.8751,
+        sm:1,
+        md:1.429,
+        lg:1.4286
+);
+@each $key, $value in $text-size {
+  .text-#{$key} {
+    font-size: $value* $text-base-size;
+  }
+
+}
+
+$space-types: (
+        m: margin,
+        p:padding,
+);
+$space-direction: (
+        t:top,
+        b:bottom,
+        l:left,
+        r:right
+);
+$space-size: (
+        0:0,
+        1:0.25,
+        2:0.5,
+        3:1,
+        4:1.5,
+);
+$space-size-base: 1em;
+
+@each $key, $value in $space-types {
+  @each $k1, $v1 in $space-direction {
+    @each $k2, $v2 in $space-size {
+      .#{$key}#{$k1}-#{$k2} {
+        #{$value}-#{$v1}: $v2*$space-size-base
+      }
+    }
+  }
+  @each $k1, $k2 in $space-size {
+    .#{$key}-x-#{$k1} {
+      padding-left: $space-size-base* $k2;
+      padding-right: $space-size-base* $k2
+
+    }
+
+    .#{$key}-y-#{$k1} {
+      padding-top:  $space-size-base* $k2;
+      padding-bottom:  $space-size-base* $k2;
+
+    }
+    .#{$key}-#{$k1} {
+      left-#{$k1}: $space-size-base* $k2
+    }
+  }
+
+}
+
+$text-weight: (
+        1:100,
+        2:200,
+        3:300,
+        4:400,
+        5:500,
+        6:600,
+        7:700,
+        8:800,
+        9:900
+);
+@each $key, $vale in $text-weight {
+  .text-weight-#{$key} {
+    font-weight: $vale;
+  }
+}
+
+.pos-a {
+  position: absolute;
+}
+
+.pos-r {
+  position: relative;
+}
+
+$pos-sizes: (
+        0:0,
+        1:0.25,
+        2:0.5,
+        3:1,
+        4:1.5,
+        5:2
+);
+$pos-base-size: 1rem;
+@each $key in (left, top, right, bottom) {
+  @each $k1, $v1 in $pos-sizes {
+    .#{$key}-#{$k1} {
+      #{$key}: $v1*$pos-base-size
+    }
+  }
+
+}
+.flex-y{
+  flex-direction: column;
+}
+.full-w{
+  width: 100vw;
+}
+.full-h{
+  height: 100vh;
+}
+.flex-x{
+  flex-direction: row;
+}
+//nav active
+.nav-active {
+  color: #1a73e8;
+  font-weight: 700;
+}
+
+//singer active
+.singer-active {
+  color: white;
+  background-color: #1a73e8;
+  border-radius: 0.6rem;
+
+}
+.circle{
+  border-radius: 50%;
+}
+.cur-pointer {
+  cursor: pointer;
+}
+
+//shadow
+.shadow {
+  box-shadow: 0 0 10px #ccc;
+}
+
+$color: (
+        'primary':#1a73e8,
+        'black': black,
+        'white': white,
+        'gray1': #fafafa,
+        'gray2': rgba(26, 26, 26, .5)
+);
+@each $key, $value in $color {
+  .text-#{$key} {
+    color: $value;
+
+  }
+  .bg-#{$key} {
+    background-color: $value;
+  }
+
+}

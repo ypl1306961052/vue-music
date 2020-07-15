@@ -1,0 +1,2 @@
+this.$route.path 获取路由路径
+this.$router.push() 跳转
